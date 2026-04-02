@@ -559,16 +559,10 @@
     .founder-avatar {
       width: 80px; height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy-light), var(--gold));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--navy);
+      object-fit: cover;
       margin-bottom: 20px;
       border: 2px solid rgba(201,168,76,0.4);
+      background: var(--navy-light);
     }
 
     .founder-name {
@@ -1183,7 +1177,7 @@
     <!-- FOUNDERS -->
     <div class="founders-grid">
       <div class="founder-card reveal">
-        <div class="founder-avatar">ST</div>
+        <img class="founder-avatar" src="sean.jpg" alt="Sean Thomas" />
         <div class="founder-name">Sean Thomas</div>
         <div class="founder-role">Co-Founder</div>
         <div class="founder-title">Technology &amp; Strategy</div>
@@ -1194,7 +1188,7 @@
       </div>
 
       <div class="founder-card reveal" style="transition-delay:0.1s">
-        <div class="founder-avatar">AW</div>
+        <img class="founder-avatar" src="andrew.jpg" alt="Andrew Wu" />
         <div class="founder-name">Andrew Wu</div>
         <div class="founder-role">Co-Founder</div>
         <div class="founder-title">Trading Operations</div>
@@ -1205,7 +1199,7 @@
       </div>
 
       <div class="founder-card reveal" style="transition-delay:0.2s">
-        <div class="founder-avatar">SM</div>
+        <img class="founder-avatar" src="shane.jpg" alt="Shane McDermott" />
         <div class="founder-name">Shane McDermott</div>
         <div class="founder-role">Co-Founder</div>
         <div class="founder-title">Operations &amp; Growth</div>
