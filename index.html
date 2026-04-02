@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prometheus Quant: Systematic Research & Trading</title>
+  <title>Prometheus Quant — Quantitative Sports Prediction</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
@@ -77,7 +77,7 @@
     }
     .nav-logo-text span { color: var(--gold); }
 
-    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
 
     .nav-links a {
       color: rgba(255,255,255,0.7);
@@ -102,7 +102,23 @@
     .nav-links a.active { color: var(--gold); }
     .nav-links a.active::after { transform: scaleX(1); }
 
-    section { min-height: 100vh; position: relative; z-index: 1; }
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    section { position: relative; z-index: 1; }
 
     /* HERO */
     #home {
@@ -111,7 +127,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 40px 80px;
+      padding: 140px 40px 80px;
+      min-height: 100vh;
       background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
                   linear-gradient(180deg, #0a1628 0%, #0d1e35 100%);
       position: relative;
@@ -177,7 +194,7 @@
       font-weight: 300;
       line-height: 1.75;
       color: rgba(255,255,255,0.72);
-      max-width: 680px;
+      max-width: 740px;
       margin: 0 auto 48px;
       opacity: 0;
       animation: fadeUp 0.9s 0.8s forwards;
@@ -253,7 +270,7 @@
       position: relative;
     }
     .pipeline-step + .pipeline-step::before {
-      content: '\\2192';
+      content: '\2192';
       position: absolute;
       left: -4px;
       top: 50%;
@@ -278,13 +295,7 @@
       color: rgba(255,255,255,0.45);
     }
 
-    /* ABOUT */
-    #about {
-      background: linear-gradient(180deg, #0d1e35 0%, #0a1628 100%);
-      padding: 120px 60px;
-      min-height: auto;
-    }
-
+    /* SHARED SECTION STYLES */
     .section-label {
       font-size: 0.65rem;
       letter-spacing: 0.35em;
@@ -309,13 +320,165 @@
       margin-bottom: 40px;
     }
 
-    .about-grid {
+    /* MLB MODEL SECTION */
+    #model {
+      background: linear-gradient(180deg, #0d1e35 0%, #0a1628 50%, #0d1e35 100%);
+      padding: 120px 60px;
+    }
+
+    .model-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .model-header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
+      align-items: start;
+      margin-bottom: 72px;
+    }
+
+    .model-header p {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(255,255,255,0.55);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      padding-top: 8px;
+    }
+
+    .model-layers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .model-card {
+      border: 1px solid rgba(201,168,76,0.15);
+      background: rgba(255,255,255,0.02);
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .model-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.4s ease;
+    }
+    .model-card:hover::before { transform: scaleY(1); }
+    .model-card:hover { background: rgba(201,168,76,0.04); }
+
+    .model-card-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .model-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .model-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* BRIER TABLE */
+    .brier-section {
+      margin-top: 64px;
+    }
+    .brier-section h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .brier-section > p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .brier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+    }
+    .brier-table thead th {
+      text-align: left;
+      padding: 14px 20px;
+      border-bottom: 2px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+    }
+    .brier-table tbody td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+    }
+    .brier-table tbody tr:hover { background: rgba(201,168,76,0.04); }
+    .edge-win { color: var(--gold); font-weight: 600; }
+    .edge-lose { color: rgba(255,255,255,0.35); }
+
+    /* WHY MLB */
+    .why-mlb {
+      margin-top: 64px;
+      padding: 48px;
+      border: 1px solid rgba(201,168,76,0.15);
+      background: rgba(201,168,76,0.03);
+    }
+    .why-mlb h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .why-mlb p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+    .why-mlb p + p { margin-top: 16px; }
+
+    /* ABOUT */
+    #about {
+      background: var(--navy);
+      padding: 120px 60px;
+    }
+
+    .about-grid {
       max-width: 1100px;
       margin: 0 auto;
-      align-items: start;
+    }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
     }
 
     .about-text p {
@@ -368,24 +531,33 @@
       line-height: 1.6;
     }
 
-    /* FOUNDER */
+    /* FOUNDER CARDS */
     .founder-card {
       border: 1px solid rgba(201,168,76,0.2);
-      padding: 40px;
+      padding: 36px;
       background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 60%);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease;
     }
     .founder-card::after {
       content: '';
       position: absolute;
       top: 0; right: 0;
-      width: 80px; height: 80px;
+      width: 60px; height: 60px;
       border-top: 2px solid rgba(201,168,76,0.3);
       border-right: 2px solid rgba(201,168,76,0.3);
     }
+    .founder-card:hover {
+      background: rgba(201,168,76,0.06);
+      transform: translateY(-3px);
+    }
 
     .founder-avatar {
-      width: 72px; height: 72px;
+      width: 80px; height: 80px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--navy-light), var(--gold));
       display: flex;
@@ -401,46 +573,51 @@
 
     .founder-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: var(--white);
       margin-bottom: 4px;
     }
     .founder-role {
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
-    .founder-bio {
+    .founder-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 28px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
     }
 
-    .contact-link {
+    .linkedin-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       color: var(--gold);
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-      padding-bottom: 4px;
-      transition: all 0.2s ease;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 10px 20px;
+      transition: all 0.25s ease;
     }
-    .contact-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+    .linkedin-link:hover {
+      color: var(--navy);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .linkedin-link svg { flex-shrink: 0; }
 
     /* PHILOSOPHY */
     #philosophy {
-      background: var(--navy);
+      background: linear-gradient(180deg, #0a1628 0%, #0d1e35 100%);
       padding: 120px 60px;
-      min-height: auto;
     }
 
     .philosophy-inner { max-width: 1100px; margin: 0 auto; }
@@ -493,9 +670,8 @@
 
     /* RESEARCH */
     #research {
-      background: linear-gradient(180deg, #0d1e35 0%, #0a1628 100%);
+      background: var(--navy);
       padding: 120px 60px;
-      min-height: auto;
     }
 
     .research-header {
@@ -572,12 +748,87 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
+    /* 2-col research for overflow */
+    .research-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 24px auto 0;
+    }
+
+    /* DATA INFRASTRUCTURE */
+    #infrastructure {
+      background: linear-gradient(180deg, #0d1e35 0%, #0a1628 100%);
+      padding: 120px 60px;
+    }
+
+    .infra-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .infra-header {
+      margin-bottom: 56px;
+    }
+
+    .infra-header p {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(255,255,255,0.55);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      max-width: 700px;
+    }
+
+    .infra-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      margin-bottom: 40px;
+    }
+    .infra-table thead th {
+      text-align: left;
+      padding: 14px 20px;
+      border-bottom: 2px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+    }
+    .infra-table tbody td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+    }
+    .infra-table tbody tr:hover { background: rgba(201,168,76,0.04); }
+
+    .infra-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+      max-width: 800px;
+    }
+
+    .tech-stack {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+
     /* CONTACT */
     #contact {
       background: var(--navy-mid);
       padding: 120px 60px;
       text-align: center;
-      min-height: auto;
       position: relative;
       overflow: hidden;
     }
@@ -651,17 +902,41 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     /* MOBILE */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       nav { padding: 0 24px; }
-      .nav-links { gap: 20px; }
-      #about, #philosophy, #research { padding: 80px 24px; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: rgba(10,22,40,0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 1px solid rgba(201,168,76,0.15);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+      }
+      .mobile-toggle { display: block; }
+
+      #home { padding: 120px 24px 60px; }
+      #about, #philosophy, #research, #model, #infrastructure { padding: 80px 24px; }
       #contact { padding: 60px 24px; }
-      .about-grid, .philosophy-header { grid-template-columns: 1fr; gap: 48px; }
+      .about-grid, .philosophy-header, .model-header { gap: 48px; }
+      .founders-grid { grid-template-columns: 1fr; }
       .philosophy-body { grid-template-columns: 1fr; }
       .research-grid { grid-template-columns: 1fr; }
+      .research-grid-2 { grid-template-columns: 1fr; }
+      .model-layers { grid-template-columns: 1fr; }
       .about-pillars { grid-template-columns: 1fr; }
       .hero-pipeline { gap: 8px; }
       .pipeline-step { padding: 0 16px; }
+      .brier-table, .infra-table { font-size: 0.68rem; }
+      .brier-table thead th, .infra-table thead th { padding: 10px 12px; }
+      .brier-table tbody td, .infra-table tbody td { padding: 10px 12px; }
       footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
     }
   </style>
@@ -671,50 +946,199 @@
 <!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <img id="nav-logo-img" src="" alt="Prometheus Quant Logo" />
+    <img id="nav-logo-img" src="logo.png" alt="Prometheus Quant Logo" />
     <span class="nav-logo-text">Prometheus <span>Quant</span></span>
   </a>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#home" class="active" data-section="home">Home</a></li>
+    <li><a href="#model" data-section="model">The Model</a></li>
     <li><a href="#about" data-section="about">About</a></li>
     <li><a href="#philosophy" data-section="philosophy">Approach</a></li>
     <li><a href="#research" data-section="research">Research</a></li>
+    <li><a href="#infrastructure" data-section="infrastructure">Data</a></li>
     <li><a href="#contact" data-section="contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="home">
-  <p class="hero-eyebrow">Systematic Research &amp; Trading</p>
-  <img id="hero-logo" class="hero-logo" src="" alt="Prometheus Quant" />
+  <p class="hero-eyebrow">Quantitative Sports Prediction</p>
+  <img id="hero-logo" class="hero-logo" src="logo.png" alt="Prometheus Quant" />
   <h1 class="hero-title">Prometheus<br><span class="hero-title-accent">Quant</span></h1>
   <div class="hero-divider"></div>
   <p class="hero-description">
-    A systematic trading firm built around a proprietary research platform,
-    designed to discover, rigorously validate, and autonomously deploy
-    strategies that compound in accuracy and sophistication over time.
+    A quantitative research firm applying institutional-grade systematic methodology
+    to sports prediction markets &mdash; with a primary focus on MLB in-game moneyline
+    pricing. Built on a proprietary platform that ingests real-time game state data,
+    constructs empirical win probability surfaces, and deploys autonomous execution
+    against CFTC-regulated prediction exchanges.
   </p>
   <div class="hero-cta-group">
-    <a href="#about" class="btn-primary">Our Approach</a>
+    <a href="#model" class="btn-primary">The Model</a>
     <a href="#research" class="btn-outline">Research</a>
   </div>
 
   <div class="hero-pipeline">
     <div class="pipeline-step">
       <span class="pipeline-num">I</span>
-      <span class="pipeline-label">Discover</span>
+      <span class="pipeline-label">Ingest</span>
     </div>
     <div class="pipeline-step">
       <span class="pipeline-num">II</span>
-      <span class="pipeline-label">Validate</span>
+      <span class="pipeline-label">Model</span>
     </div>
     <div class="pipeline-step">
       <span class="pipeline-num">III</span>
-      <span class="pipeline-label">Deploy</span>
+      <span class="pipeline-label">Execute</span>
     </div>
     <div class="pipeline-step">
       <span class="pipeline-num">IV</span>
-      <span class="pipeline-label">Compound</span>
+      <span class="pipeline-label">Learn</span>
+    </div>
+  </div>
+</section>
+
+<!-- MLB MODEL -->
+<section id="model">
+  <div class="model-inner">
+    <div class="model-header reveal">
+      <div>
+        <p class="section-label">The Engine</p>
+        <h2 class="section-title">MLB In-Game<br><em>Win Probability</em></h2>
+        <div class="section-rule"></div>
+      </div>
+      <p>
+        The core system computes real-time win probabilities for every active MLB
+        game by combining an empirical baseline with contextual factor adjustments
+        &mdash; all updated on every pitch.
+      </p>
+    </div>
+
+    <div class="model-layers reveal" style="transition-delay:0.1s">
+      <div class="model-card">
+        <div class="model-card-label">Base Layer</div>
+        <h3>Empirical Win Expectancy</h3>
+        <p>
+          A lookup table derived from 140,824 historical game states sourced from
+          Retrosheet play-by-play data (1903&ndash;2025), with era-weighted recency
+          adjustments favoring post-2014 Statcast-era baseball. For any combination
+          of inning, half, outs, base state, score differential, and ball-strike count,
+          the table returns an empirical home win frequency. Independently validated
+          at 1.12% average absolute error against 5,080 historical states.
+        </p>
+      </div>
+      <div class="model-card">
+        <div class="model-card-label">Adjustment Layer</div>
+        <h3>15-Factor Logit Model</h3>
+        <p>
+          Fifteen contextual adjustment factors applied additively in logit space,
+          shifting the baseline probability based on matchup-specific information the
+          raw historical average doesn't capture. Factors include starting pitcher
+          quality (FIP/xFIP), bullpen availability, pitcher fatigue, park factors,
+          platoon splits, team season quality via Log5, batter quality (wRC+),
+          defensive metrics (OAA), and three Statcast in-game signals. Factor weights
+          cross-validated against live market pricing.
+        </p>
+      </div>
+      <div class="model-card">
+        <div class="model-card-label">Pregame Prior</div>
+        <h3>Pinnacle Bayesian Anchor</h3>
+        <p>
+          Before the first pitch, the model is 100% anchored to devigged Pinnacle
+          closing moneylines. As game evidence accumulates, the prior decays via a
+          logistic schedule modulated by outs elapsed and absolute score differential.
+          By the 5th inning of a tied game, the prior retains roughly 33% influence.
+          In a blowout, it decays to under 20% by inning 5.
+        </p>
+      </div>
+      <div class="model-card">
+        <div class="model-card-label">Edge Case</div>
+        <h3>Ghost Runner Model</h3>
+        <p>
+          Dedicated empirical probability tables for post-2020 Manfred runner rule
+          states, built from 917 decided extra-inning games. Key finding: the market
+          systematically overprices home teams at 53&ndash;57% when the empirical home
+          win rate since the rule change is 49.4%. Captures specific states like
+          bottom-of-extras down 1 run (43.1% vs. 36.5% conventional estimate).
+        </p>
+      </div>
+    </div>
+
+    <!-- BRIER TABLE -->
+    <div class="brier-section reveal" style="transition-delay:0.15s">
+      <h3>Calibration by Game State</h3>
+      <p>Brier score decomposition against Kalshi implied probabilities &mdash; lower is better. The model knows where it wins and where it doesn't.</p>
+      <table class="brier-table">
+        <thead>
+          <tr>
+            <th>Game State</th>
+            <th>Our Model</th>
+            <th>Kalshi Implied</th>
+            <th>Edge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lead of 3&ndash;4 runs</td>
+            <td>0.017</td>
+            <td>0.019</td>
+            <td class="edge-win">Model wins</td>
+          </tr>
+          <tr>
+            <td>Blowout (5+ runs)</td>
+            <td>0.001</td>
+            <td>0.152</td>
+            <td class="edge-win">Model wins</td>
+          </tr>
+          <tr>
+            <td>Mid-game (innings 4&ndash;6)</td>
+            <td>0.122</td>
+            <td>0.133</td>
+            <td class="edge-win">Model wins</td>
+          </tr>
+          <tr>
+            <td>Late game (innings 7+)</td>
+            <td>0.093</td>
+            <td>0.205</td>
+            <td class="edge-win">Model wins</td>
+          </tr>
+          <tr>
+            <td>Tied games</td>
+            <td>0.249</td>
+            <td>0.239</td>
+            <td class="edge-lose">Kalshi wins</td>
+          </tr>
+          <tr>
+            <td>Early game (innings 1&ndash;3)</td>
+            <td>0.194</td>
+            <td>0.186</td>
+            <td class="edge-lose">Kalshi wins</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WHY MLB -->
+    <div class="why-mlb reveal" style="transition-delay:0.2s">
+      <h3>Why MLB</h3>
+      <p>
+        Baseball is the most quantifiable major professional sport for in-game
+        prediction modeling. Every plate appearance is a discrete, independent event
+        with rich observable covariates &mdash; pitch velocity, spin rate, exit velocity,
+        launch angle. A 162-game regular season with roughly 70 plate appearances per
+        game produces approximately 185,000 independent modeling events per team per year.
+      </p>
+      <p>
+        Unlike basketball or football, where continuous play creates temporal
+        dependencies that degrade state-space models, baseball's discrete sequential
+        structure maps directly to Markov chain transition matrices &mdash; the
+        mathematical framework the base model uses. Historical data extends back over
+        a century via Retrosheet, and the Statcast era (2015&ndash;present) provides
+        granular biomechanical measurements on every pitch.
+      </p>
     </div>
   </div>
 </section>
@@ -727,34 +1151,27 @@
       <h2 class="section-title">A Firm Built on<br><em>Compounding Research</em></h2>
       <div class="section-rule"></div>
       <p>
-        Prometheus Quant is a systematic trading firm operating through a proprietary
-        research platform, built from the ground up to identify genuine statistical
-        edges, stress-test them against reality, and deploy only what survives.
-      </p>
-      <p>
-        The platform's core principle is that each experiment, live trade, and market
-        regime encountered becomes data for the next generation of research. Over time,
-        the system does not just trade: it learns which hypotheses to pursue and which
-        to discard before capital is at risk.
-      </p>
-      <p>
-        Every strategy that reaches live markets has earned its place through rigorous
-        out-of-sample validation. No shortcuts. No intuition substituting for evidence.
-        The edge compounds because the research infrastructure does.
+        Prometheus Quant is a quantitative research firm operating through a
+        proprietary platform designed to identify genuine statistical edges in
+        sports prediction markets, stress-test them against reality, and deploy
+        only what survives. The same execution discipline that governs equities
+        trading &mdash; understanding market microstructure, managing slippage,
+        respecting liquidity constraints &mdash; applies directly to prediction
+        market order books.
       </p>
 
       <div class="about-pillars">
         <div class="pillar">
           <div class="pillar-title">Signal Discovery</div>
-          <div class="pillar-text">Systematic generation and screening of hypotheses across multiple data domains.</div>
+          <div class="pillar-text">Systematic generation and screening of hypotheses across player, team, and in-game data domains.</div>
         </div>
         <div class="pillar">
           <div class="pillar-title">Rigorous Validation</div>
-          <div class="pillar-text">Walk-forward testing, multiple-testing correction, and stress scenarios, enforced not optional.</div>
+          <div class="pillar-text">Walk-forward testing, factor ablation, and Brier decomposition &mdash; enforced as architectural constraints.</div>
         </div>
         <div class="pillar">
           <div class="pillar-title">Autonomous Execution</div>
-          <div class="pillar-text">Strategies deploy with real-time risk controls, full attribution, and continuous monitoring.</div>
+          <div class="pillar-text">Strategies deploy with real-time risk controls, full attribution, and closing line value tracking.</div>
         </div>
         <div class="pillar">
           <div class="pillar-title">Self-Learning Loop</div>
@@ -763,22 +1180,38 @@
       </div>
     </div>
 
-    <div class="reveal" style="transition-delay: 0.15s">
-      <div class="founder-card">
+    <!-- FOUNDERS -->
+    <div class="founders-grid">
+      <div class="founder-card reveal">
         <div class="founder-avatar">ST</div>
         <div class="founder-name">Sean Thomas</div>
-        <div class="founder-role">Founder</div>
-        <p class="founder-bio">
-          After working at Interactive Brokers, a firm built around a culture of
-          innovating and automating, and then in the software acquisition space where
-          he saw firsthand how software can make human capital exponentially more
-          valuable, Sean was inspired to build Prometheus. The goal was simple: a
-          platform that could turn anyone's hunch into a mathematical experiment, run it
-          honestly, and learn from every result.
-        </p>
-        <a href="mailto:sean@prometheusquant.com" class="contact-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-          sean@prometheusquant.com
+        <div class="founder-role">Co-Founder</div>
+        <div class="founder-title">Technology &amp; Strategy</div>
+        <a href="https://www.linkedin.com/in/sean-thomas2027/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="founder-card reveal" style="transition-delay:0.1s">
+        <div class="founder-avatar">AW</div>
+        <div class="founder-name">Andrew Wu</div>
+        <div class="founder-role">Co-Founder</div>
+        <div class="founder-title">Trading Operations</div>
+        <a href="https://www.linkedin.com/in/andrew-wu-5145a1228/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="founder-card reveal" style="transition-delay:0.2s">
+        <div class="founder-avatar">SM</div>
+        <div class="founder-name">Shane McDermott</div>
+        <div class="founder-role">Co-Founder</div>
+        <div class="founder-title">Operations &amp; Growth</div>
+        <a href="https://www.linkedin.com/in/shanehmcdermott/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
         </a>
       </div>
     </div>
@@ -795,8 +1228,8 @@
         <div class="section-rule"></div>
       </div>
       <p style="font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.55); font-size: 1.1rem; line-height: 1.75; padding-top: 8px;">
-        Prometheus operates on a set of non-negotiable principles, enforced by
-        the system as architectural constraints, not left to researcher discretion.
+        Six non-negotiable principles enforced by the system as architectural
+        constraints &mdash; not left to researcher discretion.
       </p>
     </div>
 
@@ -804,32 +1237,32 @@
       <div class="philosophy-block">
         <div class="philosophy-block-num">01</div>
         <div class="philosophy-block-title">Statistical Integrity</div>
-        <p class="philosophy-block-text">Every backtest carries significance tests. Multiple-testing bias is corrected at the factor screening stage. Walk-forward validation is a hard gate: a strategy that cannot survive it does not proceed.</p>
+        <p class="philosophy-block-text">Every factor must survive out-of-sample validation before it earns a nonzero weight. Walk-forward validation across full MLB seasons is the minimum standard. Our factor ablation process explicitly tests every active factor's marginal contribution &mdash; three candidates were zeroed after testing showed they degraded accuracy.</p>
       </div>
       <div class="philosophy-block">
         <div class="philosophy-block-num">02</div>
-        <div class="philosophy-block-title">Economic Causality</div>
-        <p class="philosophy-block-text">A signal must have a plausible mechanism. Spurious correlations that fit the data but cannot be explained do not earn deployment. The model must make sense before it is trusted with capital.</p>
+        <div class="philosophy-block-title">Domain Causality</div>
+        <p class="philosophy-block-text">Every signal must have a causal mechanism in baseball physics or game theory. A pitcher's fastball velocity declining 1.5 mph predicts degradation because biomechanical fatigue reduces spin efficiency. We do not trade on patterns that lack causal explanation &mdash; even if they backtest well.</p>
       </div>
       <div class="philosophy-block">
         <div class="philosophy-block-num">03</div>
         <div class="philosophy-block-title">Execution Realism</div>
-        <p class="philosophy-block-text">Math that works on paper but fails under realistic cost assumptions is not an edge. Every strategy is stress-tested against conservative slippage, transaction costs, and adverse fill scenarios.</p>
+        <p class="philosophy-block-text">Backtests use actual order book data &mdash; real bid/ask spreads, real depth at each price level, real fee schedules. We model fill rates, queue priority, and the reality that spreads widen after scoring events. A strategy that can't execute in a live order book is not a strategy.</p>
       </div>
       <div class="philosophy-block">
         <div class="philosophy-block-num">04</div>
         <div class="philosophy-block-title">Honest Attribution</div>
-        <p class="philosophy-block-text">Every live dollar of P&amp;L is attributed. Every fill is benchmarked. Survivorship bias, data quality gaps, and model assumptions are documented, not hidden, because accountability is the foundation of improvement.</p>
+        <p class="philosophy-block-text">Every prediction is logged with a timestamp, the full game state, all factor deltas, and the final probability output. All model outputs are benchmarked against closing prices to compute closing line value &mdash; the gold standard for measuring genuine edge.</p>
       </div>
       <div class="philosophy-block">
         <div class="philosophy-block-num">05</div>
         <div class="philosophy-block-title">Layered Risk Controls</div>
-        <p class="philosophy-block-text">Risk management is architectural, not reactive. Position limits, correlation constraints, drawdown gates, and regime detection operate in concert, bounding worst-case outcomes before they materialize.</p>
+        <p class="philosophy-block-text">Position sizing follows fractional Kelly criterion with a meaningful implied edge threshold. The system enforces per-ticker limits, session loss gates, forced exits via IOC orders, and a three-tier stop-loss system. No single game, no single night, can create catastrophic loss.</p>
       </div>
       <div class="philosophy-block">
         <div class="philosophy-block-num">06</div>
         <div class="philosophy-block-title">Publish-Ready Standards</div>
-        <p class="philosophy-block-text">Research outputs are produced to institutional quality: tearsheets, regime breakdowns, signal scorecards. If the work cannot be presented clearly and honestly, it is not complete.</p>
+        <p class="philosophy-block-text">Every component is documented to academic standards. Theoretical foundations cite peer-reviewed literature on Bayesian sports modeling, Markov chain baseball theory, and prediction market microstructure. Our research library includes 15+ papers supporting the model architecture.</p>
       </div>
     </div>
   </div>
@@ -840,7 +1273,7 @@
   <div class="research-header reveal">
     <div>
       <p class="section-label">Research</p>
-      <h2 class="section-title">Published <em>Reports</em></h2>
+      <h2 class="section-title">Published <em>Research</em></h2>
       <div class="section-rule"></div>
     </div>
     <p style="font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.45); font-size: 1rem; max-width: 360px; line-height: 1.7;">
@@ -853,31 +1286,121 @@
     <div class="report-card reveal">
       <span class="report-tag">Methodology</span>
       <h3 class="report-title">Out-of-Sample Validation: Why Most Backtests Fail in Practice</h3>
-      <p class="report-excerpt">A framework for distinguishing genuine predictive signal from in-sample overfitting. These are the structural tests that separate the two.</p>
+      <p class="report-excerpt">A framework for distinguishing genuine predictive signal from in-sample overfitting, with a case study in honest factor ablation &mdash; including the three candidates we zeroed.</p>
       <div class="report-meta">
         <span>Prometheus Research</span>
-        <span>Coming Soon</span>
+        <span>In Review</span>
       </div>
     </div>
 
     <div class="report-card reveal" style="transition-delay: 0.1s">
-      <span class="report-tag">Market Structure</span>
-      <h3 class="report-title">Reading Market Regimes: Cross-Asset Signals as Ambient Intelligence</h3>
-      <p class="report-excerpt">On the use of options structure, volatility term structure, and macro positioning as inputs to equity signal generation. Reading the whole market to trade part of it.</p>
+      <span class="report-tag">Core Model</span>
+      <h3 class="report-title">Greg Stoll to Logit Space: A 15-Factor Adjustment Framework for Empirical Win Expectancy</h3>
+      <p class="report-excerpt">The core model architecture paper. Describes the empirical baseline lookup, the logit-space adjustment framework, factor selection via ablation, and the Bayesian prior with logistic decay.</p>
       <div class="report-meta">
         <span>Prometheus Research</span>
-        <span>Coming Soon</span>
+        <span>In Progress</span>
       </div>
     </div>
 
     <div class="report-card reveal" style="transition-delay: 0.2s">
-      <span class="report-tag">Platform</span>
-      <h3 class="report-title">The Compound Advantage: How a Research Platform Learns from Its Own History</h3>
-      <p class="report-excerpt">On building systems whose research quality improves with each experiment, and why accumulated, labeled outcomes are the most durable edge in systematic trading.</p>
+      <span class="report-tag">Microstructure</span>
+      <h3 class="report-title">Retail Drift After Scoring Events: Microstructure Evidence from MLB Prediction Markets</h3>
+      <p class="report-excerpt">Empirical analysis of post-event price dynamics in MLB prediction markets, documenting market maker repricing behavior and the retail arrival schedule driven by broadcast delay.</p>
       <div class="report-meta">
         <span>Prometheus Research</span>
-        <span>Coming Soon</span>
+        <span>In Progress</span>
       </div>
+    </div>
+  </div>
+
+  <div class="research-grid-2">
+    <div class="report-card reveal" style="transition-delay: 0.25s">
+      <span class="report-tag">Edge Case</span>
+      <h3 class="report-title">Ghost Runner Mispricing: Structural Bias in Extra-Inning Prediction Market Pricing</h3>
+      <p class="report-excerpt">Documents the systematic overpricing of home teams in extra innings post-2020, with a 917-game sample and a specific correction to conventional estimates.</p>
+      <div class="report-meta">
+        <span>Prometheus Research</span>
+        <span>In Progress</span>
+      </div>
+    </div>
+
+    <div class="report-card reveal" style="transition-delay: 0.3s">
+      <span class="report-tag">Validation</span>
+      <h3 class="report-title">Closing Line Value as a Model Validation Framework in MLB Betting Markets</h3>
+      <p class="report-excerpt">Why CLV is the gold standard for measuring model edge, how we timestamp and benchmark every output, and why this matters more than raw P&amp;L over short windows.</p>
+      <div class="report-meta">
+        <span>Prometheus Research</span>
+        <span>In Progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA INFRASTRUCTURE -->
+<section id="infrastructure">
+  <div class="infra-inner">
+    <div class="infra-header reveal">
+      <p class="section-label">Infrastructure</p>
+      <h2 class="section-title">Data <em>Pipeline</em></h2>
+      <div class="section-rule"></div>
+      <p>
+        Prometheus operates a fully automated data pipeline spanning five categories
+        of MLB inputs, designed for accuracy, granularity, and timeliness.
+      </p>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.1s">
+      <table class="infra-table">
+        <thead>
+          <tr>
+            <th>Data Category</th>
+            <th>Current Source</th>
+            <th>Update Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Live game state (inning, score, runners, pitcher, count)</td>
+            <td>MLB StatsAPI</td>
+            <td>Real-time (~10s poll)</td>
+          </tr>
+          <tr>
+            <td>Pitch-level biomechanics (velocity, spin, exit velo)</td>
+            <td>MLB StatsAPI / Savant</td>
+            <td>Real-time / Daily</td>
+          </tr>
+          <tr>
+            <td>Player season statistics (FIP, xFIP, wRC+, OAA)</td>
+            <td>FanGraphs, Baseball Savant</td>
+            <td>Weekly / Daily</td>
+          </tr>
+          <tr>
+            <td>Pregame odds (devigged closing moneylines)</td>
+            <td>Pinnacle via The Odds API</td>
+            <td>Once per game</td>
+          </tr>
+          <tr>
+            <td>Historical play-by-play (1903&ndash;2025)</td>
+            <td>Retrosheet</td>
+            <td>Annual update</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.15s">
+      <p class="infra-note">
+        We are actively building institutional data partnerships to reduce latency,
+        increase coverage, and automate refresh cycles. We seek best-in-class data
+        providers who share our commitment to accuracy, granularity, and timeliness
+        &mdash; particularly for real-time push delivery of pitch-level and play-by-play
+        data where polling latency is a binding constraint on execution quality.
+      </p>
+      <p class="tech-stack">
+        Python 3.11 &middot; AWS EC2 &middot; Kalshi REST/WebSocket API &middot;
+        Plotly Dash Monitoring &middot; SQLite &rarr; PostgreSQL Pipeline
+      </p>
     </div>
   </div>
 </section>
@@ -886,38 +1409,45 @@
 <section id="contact">
   <p class="section-label">Get In Touch</p>
   <h2 class="contact-title">Inquiries &amp; Collaboration</h2>
-  <p class="contact-sub">Research &middot; Partnership &middot; General</p>
+  <p class="contact-sub">Research &middot; Partnership &middot; Data Providers &middot; General</p>
   <a href="mailto:sean@prometheusquant.com" class="contact-email-big">sean@prometheusquant.com</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Prometheus Quant</span>
-  <span class="footer-copy">&copy; 2025 Prometheus Quant. All rights reserved.</span>
+  <span class="footer-copy">&copy; 2026 Prometheus Quant. All rights reserved.</span>
 </footer>
 
 <script>
-  document.getElementById('hero-logo').src = 'logo.png';
-  document.getElementById('nav-logo-img').src = 'logo.png';
-
+  // Intersection observer for reveal animations
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
+  // Active nav link tracking
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a[data-section]');
   const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
-        if (active) active.classList.add('active');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.section === entry.target.id);
+        });
       }
     });
-  }, { threshold: 0.4 });
+  }, { rootMargin: '-40% 0px -60% 0px' });
   sections.forEach(s => scrollObserver.observe(s));
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
 </script>
+
 </body>
 </html>
