@@ -1,0 +1,33 @@
+# Prometheus Strategies
+
+> Prometheus Strategies is a quantitative trading firm specializing in prediction markets. The firm applies quantitative research and proprietary technology to exchange-listed contracts on the outcomes of real-world events, in sports and beyond. Also known as Prometheus Quant.
+
+## About the firm
+
+Prometheus Strategies (Prometheus Strategies L.L.C.) is a quantitative trading firm built around prediction markets, a class of contracts listed on CFTC-regulated exchanges that settle on the outcomes of real-world events. The firm develops systematic approaches, builds its research, pricing, and execution technology in-house, and applies what works across markets.
+
+The firm's name comes from Prometheus, whose name means forethought. For a firm in the business of pricing future outcomes, the name reflects the work.
+
+## How the firm works
+
+- Research driven: every view begins with data. Models are built, tested against outcomes, and revised as the evidence changes.
+- Priced in probabilities: prediction markets trade in probabilities, and reasoning under uncertainty is the core of the job.
+- Deliberately selective: not every market is worth trading. Positions are chosen carefully.
+- Built to improve: results feed back into research, and every settled market improves the next model.
+
+## People
+
+Prometheus Strategies is led by four partners who met at Indiana University's Kelley School of Business:
+
+- Sean Thomas, Partner: https://www.linkedin.com/in/sean-thomas2027/
+- Shane McDermott, Partner: https://www.linkedin.com/in/shanehmcdermott/
+- Bryce Lesinski, Partner: https://www.linkedin.com/in/bryce-lesinski/
+- Andrew Wu, Partner: https://www.linkedin.com/in/andrew-wu-5145a1228/
+
+## Links and contact
+
+- Website: https://prometheusquant.com
+- LinkedIn: https://www.linkedin.com/company/prometheus-quantitative-strategies
+- Email: info@prometheusquant.com
+
+Nothing on the firm's website constitutes investment advice, research, an offer, or a solicitation of any kind.

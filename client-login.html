@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Client Login | Prometheus Strategies</title>
+<meta name="description" content="Sign in to your Prometheus Strategies account." />
+<meta property="og:title" content="Client Login | Prometheus Strategies" />
+<meta property="og:description" content="Sign in to your Prometheus Strategies account." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0F2440" />
+<link rel="icon" type="image/png" href="icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="bleed nav">
+    <a class="brand" href="index.html">
+      <img src="icon.png" alt="Prometheus Strategies" />
+      <span>Prometheus Strategies</span>
+    </a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="who-we-are.html">Who We Are</a></li>
+      <li><a href="what-we-do.html">What We Do</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="client-login.html" class="login-btn">Client Login</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <div class="login-page">
+    <!-- Cosmetic portal entry. This form does not store or transmit anything anywhere.
+         Any login attempt shows the access message below. -->
+    <div class="login-card">
+      <img src="icon.png" alt="" />
+      <h1>Client Login</h1>
+      <p class="sub">Sign in to your Prometheus Strategies account.</p>
+      <form id="login-form" autocomplete="off">
+        <div class="field">
+          <label for="login-user">Username</label>
+          <input type="text" id="login-user" name="username" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" name="password" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-navy">Log In</button>
+        <p class="login-error" id="login-error">Username and password not recognized. Please email <a href="mailto:info@prometheusquant.com">info@prometheusquant.com</a> if you are having issues logging in.</p>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="bleed footer-inner">
+    <a class="footer-li" href="https://www.linkedin.com/company/prometheus-quantitative-strategies" target="_blank" rel="noopener noreferrer" aria-label="Prometheus Strategies on LinkedIn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <p class="disclosure">Nothing on this website constitutes investment advice, research, an offer, or a solicitation of any kind.</p>
+    <p class="copyright">&copy; Prometheus Strategies L.L.C. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Cosmetic portal: nothing is stored or transmitted anywhere.
+  document.getElementById('login-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('login-pass').value = '';
+    return false;
+  });
+</script>
+
+<!-- CLOUDFLARE WEB ANALYTICS
+     Option A (easiest): enable it on the Pages project in the Cloudflare dashboard; it covers every page automatically.
+     Option B (manual): paste the beacon <script> snippet here, before </body>, on every page. -->
+
+</body>
+</html>
