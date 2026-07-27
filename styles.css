@@ -324,7 +324,7 @@
   }
   .contact-email:hover { border-color: #fff; }
 
-  /* ============ CLIENT LOGIN ============ */
+  /* ============ LOGIN ============ */
   .login-page {
     background: var(--bg-alt);
     min-height: calc(100vh - 76px);
